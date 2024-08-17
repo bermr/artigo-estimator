@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
+    <link rel="stylesheet" href="style.css" />
+    <title>psupdate</title>
+  </head>
+  <body>
+      <h1>Artigo Estimator</h1>
+      <form id="cost-form">
+          <label for="projectType">Projeto ou consultoria?</label>
+          <select id="projectType" name="projectType" required>
+              <option value="project">Projeto</option>
+              <option value="consultancy">Consultoria</option>
+          </select>
+          <label for="squareMeters">Metros quadrados:</label>
+          <input type="number" id="squareMeters" name="squareMeters" required>
+
+          <label for="complexity">Complexidade:</label>
+          <select id="complexity" name="complexity" required>
+              <option value="low">Baixa</option>
+              <option value="medium">Média</option>
+              <option value="high">Alta</option>
+              <option value="special">Especial</option>
+          </select>
+
+          <label for="numberOfVisits">Número de visitas:</label>
+          <input type="number" id="numberOfVisits" name="numberOfVisits" required>
+
+          <label for="isWetArea">Área molhada?</label>
+          <select id="isWetArea" name="isWetArea" required>
+              <option value="1">Sim</option>
+              <option value="0"">Não</option>
+          </select>
+          <button type="submit">Calculate Cost</button>
+      </form>
+
+      <div id="result"></div>
+  </body>
+  <script src="script.js"></script>
+</html>
