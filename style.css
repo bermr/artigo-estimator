@@ -1,5 +1,5 @@
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Roboto';
     margin: 20px;
     padding: 20px;
     max-width: 600px;
@@ -9,6 +9,12 @@ body {
 
 h1 {
     text-align: center;
+}
+
+.logo {
+    max-width: 100%;
+    height: auto;
+    display: block;
 }
 
 form {
@@ -41,7 +47,7 @@ button:hover {
 
 #result {
     margin-top: 20px;
-    font-size: 18px;
+    font-size: 22px;
     font-weight: bold;
 }
 

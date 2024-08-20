@@ -16,23 +16,16 @@
     <title>Artigo Project Cost Estimator</title>
   </head>
   <body>
-      <h1>Artigo Project Cost Estimator</h1>
-      <form id="cost-form">
+      <img src="logo.jpeg" class="logo">
+      <form style="margin-top: 10px;" id="cost-form">
           <label for="projectType">Projeto ou consultoria?</label>
           <select id="projectType" name="projectType" required>
               <option value="project">Projeto</option>
               <option value="consultancy">Consultoria</option>
           </select>
+
           <label for="squareMeters">Metros quadrados:</label>
           <input type="number" id="squareMeters" name="squareMeters" required>
-
-          <label for="complexity">Complexidade:</label>
-          <select id="complexity" name="complexity" required>
-              <option value="low">Baixa</option>
-              <option value="medium">Média</option>
-              <option value="high">Alta</option>
-              <option value="special">Especial</option>
-          </select>
 
           <label for="numberOfVisits">Número de visitas:</label>
           <input type="number" id="numberOfVisits" name="numberOfVisits" required>
@@ -41,6 +34,14 @@
           <select id="isWetArea" name="isWetArea" required>
               <option value="0">Não</option>
               <option value="1"">Sim</option>
+          </select>
+
+          <label id="complexityLabel" for="complexity">Complexidade:</label>
+          <select id="complexity" name="complexity" required>
+              <option value="low">Baixa</option>
+              <option value="medium">Média</option>
+              <option value="high">Alta</option>
+              <option value="special">Especial</option>
           </select>
           <button type="submit">Calcular</button>
       </form>
