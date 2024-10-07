@@ -31,7 +31,7 @@ function estimateCost(
   const visitsCost = 80 * 2 * numberOfVisits;
 
   if (!isProject) {
-    return roundToNearestTen(squareMetersCost + 160 + visitsCost);
+	return roundToNearestTen((squareMetersCost + 160 + visitsCost) * 1.2);
   }
 
   const complexityPerSquareMeter = {
