@@ -22,6 +22,7 @@
           <select id="projectType" name="projectType" required>
               <option value="project">Projeto</option>
               <option value="consultancy">Consultoria</option>
+              <option value="aProject">Projeto arquitetônico</option>
           </select>
 
           <label for="squareMeters">Metros quadrados:</label>
@@ -32,6 +33,12 @@
 
           <label for="isWetArea">Área molhada?</label>
           <select id="isWetArea" name="isWetArea" required>
+              <option value="0">Não</option>
+              <option value="1"">Sim</option>
+          </select>
+ 
+          <label for="isUrgent">Urgente ou obra em andamento?</label>
+          <select id="isUrgent" name="isUrgent" required>
               <option value="0">Não</option>
               <option value="1"">Sim</option>
           </select>

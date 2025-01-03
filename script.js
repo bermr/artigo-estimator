@@ -1,15 +1,19 @@
-function getSquareMetersCost(squareMeters, isWetArea) {
+function getSquareMetersCost(squareMeters, isWetArea, isArchitecturalProject) {
+  if (isArchitecturalProject) {
+    return 120 * squareMeters;
+  }
+
   if (isWetArea) {
-    return 65 * squareMeters;
+    return 70 * squareMeters;
   }
 
   let multiplier;
   if (squareMeters < 25) {
-    multiplier = 50;
+    multiplier = 65;
   } else if (squareMeters > 40) {
-    multiplier = 50;
+    multiplier = 60;
   } else {
-    multiplier = 40;
+    multiplier = 50;
   }
 
   return squareMeters * multiplier;
@@ -25,13 +29,17 @@ function estimateCost(
   numberOfVisits,
   isWetArea,
   isProject,
+  isArchitecturalProject,
+  isUrgent
 ) {
-  const squareMetersCost = getSquareMetersCost(squareMeters, isWetArea);
+  const squareMetersCost = getSquareMetersCost(squareMeters, isWetArea, isArchitecturalProject);
 
   const visitsCost = 80 * 2 * numberOfVisits;
 
+  const urgentMultiplier = isUrgent ? 1.2 : 1;
+
   if (!isProject) {
-	return roundToNearestTen((squareMetersCost + 160 + visitsCost) * 1.2);
+    return roundToNearestTen(((squareMetersCost + 160 + visitsCost) * 1.2) * urgentMultiplier);
   }
 
   const complexityPerSquareMeter = {
@@ -53,7 +61,7 @@ function estimateCost(
     squareMetersCost * (1.5 + complexityPerSquareMeter[complexity] / 100) +
     operationalCosts;
 
-  return roundToNearestTen(totalCost);
+  return roundToNearestTen(totalCost * urgentMultiplier);
 }
 
 function formatInReais(valor) {
@@ -79,8 +87,11 @@ document
       document.getElementById("numberOfVisits").value,
     );
     const isWetArea = parseInt(document.getElementById("isWetArea").value);
+    const isUrgent = parseInt(document.getElementById("isUrgent").value);
 
     const isProject = projectType === "project";
+
+    const isArchitecturalProject = projectType === "aProject";
 
     const totalCost = estimateCost(
       squareMeters,
@@ -88,6 +99,8 @@ document
       numberOfVisits,
       isWetArea,
       isProject,
+      isArchitecturalProject,
+      isUrgent
     );
 
     let message =
@@ -105,7 +118,7 @@ document.getElementById("projectType").addEventListener("change", function() {
   const component = document.getElementById("complexity");
   const label = document.getElementById("complexityLabel");
 
-  if (selectedValue === "consultancy") {
+  if (selectedValue === "consultancy" || selectedValue === 'aProject') {
     component.style.display = "none";
     label.style.display = "none";
   } else {
