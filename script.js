@@ -30,13 +30,15 @@ function estimateCost(
   isWetArea,
   isProject,
   isArchitecturalProject,
-  isUrgent
+  isUrgent,
+  monitoring
 ) {
   const squareMetersCost = getSquareMetersCost(squareMeters, isWetArea, isArchitecturalProject);
 
   const visitsCost = 80 * 2 * numberOfVisits;
 
   const urgentMultiplier = isUrgent ? 1.2 : 1;
+  const monitoringMultiplier = monitoring ? 1.2 : 1;
 
   if (!isProject) {
     return roundToNearestTen(((squareMetersCost + 160 + visitsCost) * 1.2) * urgentMultiplier);
@@ -61,7 +63,7 @@ function estimateCost(
     squareMetersCost * (1.5 + complexityPerSquareMeter[complexity] / 100) +
     operationalCosts;
 
-  return roundToNearestTen(totalCost * urgentMultiplier);
+  return roundToNearestTen(totalCost * urgentMultiplier * monitoringMultiplier);
 }
 
 function formatInReais(valor) {
@@ -93,6 +95,10 @@ document
 
     const isArchitecturalProject = projectType === "aProject";
 
+    const monitoring = parseInt(document
+      .getElementById("monitoring")
+      .value);
+
     const totalCost = estimateCost(
       squareMeters,
       complexity,
@@ -100,13 +106,14 @@ document
       isWetArea,
       isProject,
       isArchitecturalProject,
-      isUrgent
+      isUrgent,
+      monitoring
     );
 
     let message =
       projectType === "project"
-        ? "Custo do projeto: "
-        : "Custo da consultoria: ";
+        ? "Custo do projeto: " : projectType === "consultancy" ?
+          "Custo da consultoria: " : "Custo do projeto arquitetônico: ";
 
     message += formatInReais(totalCost);
 
@@ -115,14 +122,21 @@ document
 
 document.getElementById("projectType").addEventListener("change", function() {
   const selectedValue = this.value;
-  const component = document.getElementById("complexity");
-  const label = document.getElementById("complexityLabel");
+  const complexityComponent = document.getElementById("complexity");
+  const complexityLabel = document.getElementById("complexityLabel");
+
+  const monitoringComponent = document.getElementById("monitoring");
+  const monitoringLabel = document.getElementById("monitoringLabel");
 
   if (selectedValue === "consultancy" || selectedValue === 'aProject') {
-    component.style.display = "none";
-    label.style.display = "none";
+    complexityComponent.style.display = "none";
+    monitoringComponent.style.display = "none";
+    complexityLabel.style.display = "none";
+    monitoringLabel.style.display = "none";
   } else {
-    component.style.display = "flex";
-    label.style.display = "flex";
+    complexityComponent.style.display = "flex";
+    monitoringComponent.style.display = "flex";
+    complexityLabel.style.display = "flex";
+    monitoringLabel.style.display = "flex";
   }
 });
