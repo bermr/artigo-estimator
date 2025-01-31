@@ -117,7 +117,8 @@ document
 
     message += formatInReais(totalCost);
 
-    document.getElementById("result").innerText = message;
+    document.getElementById("result-container").style.display = 'block';
+    document.getElementById("result").innerHTML = message;
   });
 
 document.getElementById("projectType").addEventListener("change", function() {

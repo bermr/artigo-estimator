@@ -17,6 +17,7 @@
   </head>
   <body>
       <img src="logo.jpeg" class="logo">
+      <div class="container">
       <form style="margin-top: 10px;" id="cost-form">
           <label for="projectType">Projeto ou consultoria?</label>
           <select id="projectType" name="projectType" required>
@@ -59,7 +60,13 @@
           <button type="submit">Calcular</button>
       </form>
 
-      <div id="result"></div>
+      <div id="result-container">
+        <div id="result"></div>
+      </div>
+    </div>
   </body>
+      <footer class="text-center mt-4 text-white">
+      <p>&copy; 2024 Artigo Project Cost Estimator. Todos os direitos reservados.</p>
+    </footer>
   <script src="script.js"></script>
 </html>
