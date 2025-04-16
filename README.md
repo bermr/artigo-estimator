@@ -6,7 +6,7 @@ Ferramenta simples para estimativas rápidas de projeto desenvolvida pelo escrit
 
 Este projeto foi feito para tornar o processo de estimativa de custos mais ágil, especialmente em reuniões ou momentos iniciais de briefing com o cliente. Ele permite simular valores baseados em categorias de intervenção, padrões de acabamento e área total do projeto.
 
-⚙️ Funcionalidades
+## ⚙️ Funcionalidades
 
 A calculadora possui os seguintes campos:
 
